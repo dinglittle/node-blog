@@ -88,3 +88,47 @@ npm config set save-exact true
 ## npm shrinkwrap 依赖树
 
 运行 `npm shrinkwrap` 会在当前目录下产生一个 `npm-shrinkwrap.json` , 包含了通过 `node_modules` 计算出的依赖书及版本, 只要目录下有 `npm-shrinkwrap.json` 则运行 `npm install` 会优先使用 `npm -shrinkwrap.json` 进行安装, 没有则使用 `package.json` 进行安装
+
+# node 模板
+
+```
+<% code %>：运行 JavaScript 代码，不输出
+<%= code %>：显示转义后的 HTML 内容
+<%- code %>：显示原始 HTML 内容
+```
+
+## inclues 拆分模板
+
+- 模板可服用,减少重复代码
+- 主模板结构清晰
+
+我们将原来的 users.ejs 拆成出了 header.ejs 和 footer.ejs，并在 users.ejs 通过 ejs 内置的 include 方法引入，从而实现了跟以前一个模板文件相同的功能。
+
+### header.ejs
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      body {padding: 50px;font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;}
+    </style>
+  </head>
+  <body>
+```
+
+### footer.ejs
+
+```
+  </body>
+</html>
+```
+
+### users.ejs
+
+```
+<%- include('header') %>
+  <h1><%= name.toUpperCase() %></h1>
+  <p>hello, <%= name %></p>
+<%- include('footer') %>
+```

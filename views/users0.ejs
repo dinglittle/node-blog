@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style type="text/css">
+    body {
+      padding: 50px;
+      font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <h1><%= name.toUpperCase() %></h1> -->
+  <!-- 不输出 -->
+  <p>hello1 不输出, <% "<h1>hello</h1>" %></p>
+  <p>hello2 转义后的内容 , <%= "<h1>hello</h1>" %></p>
+  <!-- 转义后的 -->
+  <p>hello3 原始HTML内容, <%- "<strong>hello 转义</strong>" %></p>
+</body>
+
+</html>
